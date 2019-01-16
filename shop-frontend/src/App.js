@@ -46,7 +46,9 @@ class App extends Component {
 	}
 
 	clearCart = () => {
-		axios.post('http://localhost:8080/clear', []).then((response) => {
+    axios
+    .post('http://localhost:8080/clear', [])
+    .then((response) => {
 			console.log(response.data)
 		})
 	}

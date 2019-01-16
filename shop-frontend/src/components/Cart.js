@@ -6,9 +6,6 @@ class Cart extends Component {
 		const itemsList = this.props.purchaseItems.map((item, i) => {
       return <CartItem 
       key={i} 
-      // name={item.name} 
-      // price={item.price} 
-      // type={item.type}
       item={item}
       />
 		})

@@ -11,21 +11,12 @@ class Shop extends Component {
 	}
 
 	addItemToCart = (itemInfo) => {
-		console.log(itemInfo)
-
-		// let newCart = this.state.shoppingCart.concat([ itemInfo ])
-		// this.setState({
-		// 	shoppingCart: newCart
-		// })
-    
     const findDuplicate = this.state.shoppingCart.find((product) => {
       return product.name === itemInfo.name
     })
 
-    //using truthy/falsy value of the return of fundDuplicate (.find will return undefined if no match found, otherwise will return the first value that satisfies it)
 		if (!findDuplicate) {
 			const newCart = this.state.shoppingCart.concat([ { ...itemInfo, quantity: 1 } ])
-			console.log(newCart)
 
 			this.setState({
 				shoppingCart: newCart
@@ -41,7 +32,6 @@ class Shop extends Component {
 					return product
 				}
 			})
-			console.log(newCart)
 
 			this.setState({
 				shoppingCart: newCart
@@ -50,23 +40,26 @@ class Shop extends Component {
 	}
 
 	componentDidUpdate() {
-		axios.post('http://localhost:8080/cart', this.state.shoppingCart).then((response) => {
+    axios
+    .post('http://localhost:8080/cart', this.state.shoppingCart)
+    .then((response) => {
 			console.log(response.data)
 		})
 	}
 
 	componentDidMount() {
-		//attempt at putting products in server - I did it separate from the shopping cart
-		axios.get('http://localhost:8080/products').then((response) => {
-			console.log(response.data)
+    axios
+    .get('http://localhost:8080/products')
+    .then((response) => {
 			this.setState({
 				inkProducts: response.data.inkProducts,
 				penProducts: response.data.penProducts
 			})
 		})
 
-		axios.get('http://localhost:8080/cart').then((response) => {
-			console.log(response.data) //forgot to delete this console.log
+    axios
+    .get('http://localhost:8080/cart')
+    .then((response) => {
 			this.setState({
 				shoppingCart: response.data
 			})

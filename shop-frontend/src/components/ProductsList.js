@@ -4,17 +4,7 @@ import { Product } from './'
 class ProductsList extends Component {
 	render() {
 		const productList = this.props.products.map((product) => {
-			return (
-				<Product
-					key={product.name}
-					// name={product.name}
-					// price={product.price}
-					// picture={product.picture}
-          // type={product.type}
-          item={product}
-          addItemToCart={this.props.addItemToCart}
-				/>
-			)
+			return <Product key={product.name} item={product} addItemToCart={this.props.addItemToCart} />
 		})
 
 		return (
