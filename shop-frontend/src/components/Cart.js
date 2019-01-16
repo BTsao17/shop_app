@@ -12,13 +12,17 @@ class Cart extends Component {
 
 		const addSubtotal = this.props.purchaseItems.reduce((accumulator, currentV) => {
 			return accumulator + currentV.price
-		}, 0)
+    }, 0)
+    
+    const addTotalQuantity = this.props.purchaseItems.reduce((accumulator, currentV) => {
+      return accumulator + currentV.quantity
+    }, 0)
 
 		return (
 			<div id="shoppingCart">
 				<div className="row">
 					<div className="col">
-						<h2 className="text-center">Shopping Cart ({this.props.purchaseItems.length.toString()})</h2>
+						<h2 className="text-center">Shopping Cart ({addTotalQuantity})</h2>
 					</div>
 				</div>
 				<div className="row">{itemsList}</div>
