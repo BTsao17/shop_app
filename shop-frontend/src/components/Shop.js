@@ -74,12 +74,12 @@ class Shop extends Component {
 					<div className="col">
 						<h1 className="text-center">The Shop</h1>
 						<h2 className="text-center">Welcome {this.props.username}! </h2>
-						<h5 className="text-center">
+						{/* <h5 className="text-center">
 							Not {this.props.username}?
 							<button className="btn btn-secondary" type="submit" onClick={() => this.props.logOut()}>
 								Logout
 							</button>
-						</h5>
+						</h5> */}
 						<h4 className="text-center">
 							<span>Are you looking for.....</span>
 							<Link to={match.url + '/fountain_pens'}>Fountain Pens</Link>

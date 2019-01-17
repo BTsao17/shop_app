@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { Route, Switch, Link, Redirect } from 'react-router-dom'
-import { Home, Shop } from './components'
+// import './App.css'
+import { Home, Shop, Header } from './components'
 import axios from 'axios'
+import { CssBaseline } from '@material-ui/core'
 
 class App extends Component {
 	state = {
 		username: '',
-		loggedIn: false,
+		loggedIn: false
 	}
 
 	updateName = (e) => {
@@ -15,7 +17,7 @@ class App extends Component {
 		this.setState(
 			{
 				username: name,
-				loggedIn: true,
+				loggedIn: true
 			},
 			() => {
 				localStorage.setItem('username', this.state.username)
@@ -29,7 +31,7 @@ class App extends Component {
 		if (name) {
 			this.setState({
 				username: name,
-				loggedIn: true,
+				loggedIn: true
 			})
 		}
 	}
@@ -39,51 +41,40 @@ class App extends Component {
 		this.setState(
 			{
 				username: '',
-				loggedIn: false,
+				loggedIn: false
 			},
 			() => this.clearCart()
 		)
 	}
 
 	clearCart = () => {
-    axios
-    .post('http://localhost:8080/clear', [])
-    .then((response) => {
+		axios.post('http://localhost:8080/clear', []).then((response) => {
 			console.log(response.data)
 		})
 	}
 
 	render() {
 		return (
-			<div>
-				<nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
-					<span className="navbar-brand text-warning">Stationery Emporium</span>
-					<button
-						className="navbar-toggler"
-						type="button"
-						data-toggle="collapse"
-						data-target="#mainNavBar"
-						aria-controls="mainNavBar"
-						aria-expanded="false"
-						aria-label="Toggle navigation"
-					>
-						<span className="navbar-toggler-icon" />
-					</button>
-					<div className="collapse navbar-collapse" id="mainNavBar">
-						<ul className="navbar-nav">
-							<li className="nav-item active">
-								<Link to="/" className="text-light">
+			<React.Fragment>
+				<CssBaseline />
+				<Header logOut={this.logOut} />
+				{/* <nav>
+					<span>Stationery Emporium</span>
+					<div>
+						<ul>
+							<li>
+								<Link to="/">
 									Home
 								</Link>
 							</li>
-							<li className="nav-item">
-								<Link to="/shop" className="text-light">
+							<li>
+								<Link to="/shop">
 									Shop
 								</Link>
 							</li>
 						</ul>
 					</div>
-				</nav>
+				</nav> */}
 
 				<Switch>
 					<Route
@@ -100,7 +91,7 @@ class App extends Component {
 								<Shop
 									username={this.state.username}
 									loggedIn={this.state.loggedIn}
-									logOut={this.logOut}
+									// logOut={this.logOut}
 									{...renderProps}
 								/>
 							) : (
@@ -109,7 +100,7 @@ class App extends Component {
 						}}
 					/>
 				</Switch>
-			</div>
+			</React.Fragment>
 		)
 	}
 }

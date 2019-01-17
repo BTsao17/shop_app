@@ -4,6 +4,7 @@ import ProductsList from './ProductsList'
 import Product from './Product'
 import Cart from './Cart'
 import CartItem from './CartItem'
+import Header from './Header'
 
 export {
     Home,
@@ -11,5 +12,6 @@ export {
     ProductsList,
     Product, 
     Cart,
-    CartItem
+    CartItem,
+    Header
 }
