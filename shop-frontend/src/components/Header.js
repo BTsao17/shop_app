@@ -8,10 +8,10 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCartOutlined'
 
 const styles = {
 	root: {
-		flexGrow: 1 //what exactly is flexGrow?
+		flexGrow: 1 //what exactly is flexGrow? Not sure if it's necessary here. 
 	},
 	grow: {
-		flexGrow: 1
+		flexGrow: 1 //flexGrow is a CSS property that has to do with flexbox 
 	},
 	menuButton: {
 		marginLeft: -12,
@@ -90,7 +90,7 @@ class Header extends Component {
 							</Drawer>
 
 							<Typography variant="h6" color="inherit" className={classes.grow}>
-								Stationery Emporium
+								The Stationery Emporium
 							</Typography>
 							<IconButton color="inherit" className={classes.cartButton} aria-label="Shopping Cart" component={Link} to='/cart'>
               {/* not sure if adding component={Link} is normal practice to allow icon buttons to work as links without onClick */}
