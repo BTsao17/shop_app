@@ -11,7 +11,8 @@ const styles = {
     paddingTop: 65
   }, 
   welcomePadding: {
-    paddingTop: 40
+    paddingTop: 40, 
+    paddingBottom: 40
   }
 }
 
