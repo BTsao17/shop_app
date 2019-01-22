@@ -20,47 +20,43 @@ class Shop extends Component {
 	state = {
 		inkProducts: [],
 		penProducts: [],
-		shoppingCart: []
+		// shoppingCart: []
 	}
 
-	handleChange = (e, value) => {
-		this.setState({ value })
-	}
+	// addItemToCart = (itemInfo) => {
+	// 	const findDuplicate = this.state.shoppingCart.find((product) => {
+	// 		return product.name === itemInfo.name
+	// 	})
 
-	addItemToCart = (itemInfo) => {
-		const findDuplicate = this.state.shoppingCart.find((product) => {
-			return product.name === itemInfo.name
-		})
+	// 	if (!findDuplicate) {
+	// 		const newCart = this.state.shoppingCart.concat([ { ...itemInfo, quantity: 1 } ])
 
-		if (!findDuplicate) {
-			const newCart = this.state.shoppingCart.concat([ { ...itemInfo, quantity: 1 } ])
+	// 		this.setState({
+	// 			shoppingCart: newCart
+	// 		})
+	// 	}
+	// 	else {
+	// 		const newCart = this.state.shoppingCart.map((product) => {
+	// 			if (product.name === itemInfo.name) {
+	// 				product = { ...product, quantity: product.quantity + 1 }
+	// 				return product
+	// 			}
+	// 			else {
+	// 				return product
+	// 			}
+	// 		})
 
-			this.setState({
-				shoppingCart: newCart
-			})
-		}
-		else {
-			const newCart = this.state.shoppingCart.map((product) => {
-				if (product.name === itemInfo.name) {
-					product = { ...product, quantity: product.quantity + 1 }
-					return product
-				}
-				else {
-					return product
-				}
-			})
+	// 		this.setState({
+	// 			shoppingCart: newCart
+	// 		})
+	// 	}
+	// }
 
-			this.setState({
-				shoppingCart: newCart
-			})
-		}
-	}
-
-	componentDidUpdate() {
-		axios.post('http://localhost:8080/cart', this.state.shoppingCart).then((response) => {
-			// console.log(response.data) 
-		})
-	}
+	// componentDidUpdate() {
+	// 	axios.post('http://localhost:8080/cart', this.state.shoppingCart).then((response) => {
+	// 		// console.log(response.data) 
+	// 	})
+	// }
 
 	componentDidMount() {
 		axios.get('http://localhost:8080/products').then((response) => {
@@ -70,11 +66,11 @@ class Shop extends Component {
 			})
 		})
 
-		axios.get('http://localhost:8080/cart').then((response) => {
-			this.setState({
-				shoppingCart: response.data
-			})
-		})
+		// axios.get('http://localhost:8080/cart').then((response) => {
+		// 	this.setState({
+		// 		shoppingCart: response.data
+		// 	})
+		// })
 	}
 
 	render() {
@@ -111,7 +107,7 @@ class Shop extends Component {
 										<ProductsList
 											category="Fountain Pens"
 											products={this.state.penProducts}
-											addItemToCart={this.addItemToCart}
+											addItemToCart={this.props.addItemToCart}
 										/>
 									)
 								}}
@@ -123,14 +119,14 @@ class Shop extends Component {
 										<ProductsList
 											category="Inks"
 											products={this.state.inkProducts}
-											addItemToCart={this.addItemToCart}
+											addItemToCart={this.props.addItemToCart}
 										/>
 									)
 								}}
 							/>
 						</Switch>
 		
-						<Cart purchaseItems={this.state.shoppingCart} />
+						{/* <Cart purchaseItems={this.state.shoppingCart} /> */}
 			</div>
 		)
 	}

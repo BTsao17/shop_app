@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import { Route, Switch, Link, Redirect } from 'react-router-dom'
 // import './App.css'
-import { Home, Shop, Header } from './components'
+import { Home, Shop, Header, Cart } from './components'
 import axios from 'axios'
 import { CssBaseline } from '@material-ui/core'
 
 class App extends Component {
 	state = {
 		username: '',
-		loggedIn: false
+		loggedIn: false,
+		shoppingCart: []
 	}
 
 	updateName = (e) => {
@@ -34,6 +35,18 @@ class App extends Component {
 				loggedIn: true
 			})
 		}
+
+		axios.get('http://localhost:8080/cart').then((response) => {
+			this.setState({
+				shoppingCart: response.data
+			})
+		})
+	}
+
+	componentDidUpdate() {
+		axios.post('http://localhost:8080/cart', this.state.shoppingCart).then((response) => {
+			// console.log(response.data)
+		})
 	}
 
 	logOut = () => {
@@ -53,11 +66,48 @@ class App extends Component {
 		})
 	}
 
+	addItemToCart = (itemInfo) => {
+		const findDuplicate = this.state.shoppingCart.find((product) => {
+			return product.name === itemInfo.name
+		})
+
+		if (!findDuplicate) {
+			const newCart = this.state.shoppingCart.concat([ { ...itemInfo, quantity: 1 } ])
+
+			this.setState({
+				shoppingCart: newCart
+			})
+		}
+		else {
+			const newCart = this.state.shoppingCart.map((product) => {
+				if (product.name === itemInfo.name) {
+					product = { ...product, quantity: product.quantity + 1 }
+					return product
+				}
+				else {
+					return product
+				}
+			})
+
+			this.setState({
+				shoppingCart: newCart
+			})
+		}
+	}
+
 	render() {
+		const { username, loggedIn, shoppingCart } = this.state
+
+		const quantityInCart = shoppingCart.reduce((accumulator, currentV) => {
+			return accumulator + currentV.quantity
+		}, 0)
+
+		console.log(quantityInCart)
+
 		return (
 			<React.Fragment>
 				<CssBaseline />
-				<Header logOut={this.logOut} />
+				<Header logOut={this.logOut} quantityInCart={quantityInCart} />
 				{/* <nav>
 					<span>Stationery Emporium</span>
 					<div>
@@ -81,22 +131,34 @@ class App extends Component {
 						path="/"
 						exact
 						render={() => {
-							return this.state.loggedIn ? <Redirect to="/shop" /> : <Home updateName={this.updateName} />
+							return loggedIn ? <Redirect to="/shop" /> : <Home updateName={this.updateName} />
 						}}
 					/>
 					<Route
 						path="/shop"
 						render={(renderProps) => {
-							return this.state.loggedIn ? (
+							return loggedIn ? 
 								<Shop
-									username={this.state.username}
-									loggedIn={this.state.loggedIn}
+									username={username}
+									loggedIn={loggedIn}
 									// logOut={this.logOut}
 									{...renderProps}
+									addItemToCart={this.addItemToCart}
 								/>
-							) : (
+							 : 
 								<Redirect to="/" exact />
-							)
+							
+						}}
+					/>
+					<Route
+						path="/cart"
+						render={(renderProps) => {
+							return loggedIn ? 
+              <Cart 
+              purchaseItems={shoppingCart} 
+              {...renderProps} //might need this when I want to mock-up check-out
+              /> : 
+              <Redirect to="/" exact />
 						}}
 					/>
 				</Switch>

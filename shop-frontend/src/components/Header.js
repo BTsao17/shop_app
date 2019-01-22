@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { withStyles, AppBar, Toolbar, Typography, IconButton} from '@material-ui/core'
+import { withStyles, AppBar, Toolbar, Typography, IconButton, Badge} from '@material-ui/core'
 import { Drawer, List, ListItem, ListItemText, Divider } from '@material-ui/core' //for Side Menu
 import MenuIcon from '@material-ui/icons/Menu'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCartOutlined'
@@ -50,9 +50,9 @@ class Header extends Component {
 				<Divider />
 				{/* links below will have to be conditionally rendered depending on login status */}
 				<List component="nav">
-					<SideMenuLink to="/login" primary="Login" />
+					{/* <SideMenuLink to="/login" primary="Login" />
 					<SideMenuLink to="/signup" primary="New Customer? Register Here" />
-					<SideMenuLink to="/account" primary="Account" />
+					<SideMenuLink to="/account" primary="Account" /> */}
 					<ListItem button onClick={()=> this.props.logOut()}>
 					<ListItemText primary="Logout" />
 					</ListItem>
@@ -94,7 +94,9 @@ class Header extends Component {
 							</Typography>
 							<IconButton color="inherit" className={classes.cartButton} aria-label="Shopping Cart" component={Link} to='/cart'>
               {/* not sure if adding component={Link} is normal practice to allow icon buttons to work as links without onClick */}
-								<ShoppingCartIcon />
+								<Badge badgeContent={this.props.quantityInCart} color='secondary'>
+                <ShoppingCartIcon />
+                </Badge>
 							</IconButton>
 						</Toolbar>
 					</AppBar>

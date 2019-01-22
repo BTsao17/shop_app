@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { CartItem } from './'
 
 import PropTypes from 'prop-types'
@@ -11,7 +12,8 @@ import {
 	TableRow,
 	Paper,
 	Typography,
-	Grid
+	Grid,
+	Button
 } from '@material-ui/core'
 
 const PST_Rate = 0.07
@@ -31,6 +33,16 @@ const styles = (theme) => ({
 	display: {
 		display: 'flex',
 		justifyContent: 'center'
+	},
+	titlePadding: {
+		paddingTop: 80
+	},
+	button: {
+		margin: theme.spacing.unit
+	},
+	buttonDisplay: {
+    display: 'flex',
+    justifyContent: 'flex-end'
 	}
 })
 
@@ -55,16 +67,16 @@ class Cart extends Component {
 		const calculatePST = PST_Rate * invoiceSubtotal
 		const invoiceTotal = invoiceSubtotal + calculateGST + calculatePST
 
-		const addTotalQuantity = purchaseItems.reduce((accumulator, currentV) => {
-			return accumulator + currentV.quantity
-		}, 0)
+		// const addTotalQuantity = purchaseItems.reduce((accumulator, currentV) => {
+		// 	return accumulator + currentV.quantity
+		// }, 0)
 
 		return (
 			<div>
 				<Grid container>
 					<Grid item xs={12}>
-						<Typography variant="h4" component="h2" align="center">
-							Shopping Cart ({addTotalQuantity})
+						<Typography className={classes.titlePadding} variant="h4" component="h2" align="center">
+							Shopping Cart
 						</Typography>
 					</Grid>
 					<Grid item md={1} lg={2} xl={3} />
@@ -103,6 +115,19 @@ class Cart extends Component {
 										</TableRow>
 									</TableBody>
 								</Table>
+								<div className={classes.buttonDisplay}>
+									<Button variant="outlined" size="small" className={classes.button} component={Link} to='/shop'>
+										Continue Shopping
+									</Button>
+									<Button
+										variant="contained"
+										size="small"
+										className={classes.button}
+										color="primary"
+									>
+										Proceed to Checkout
+									</Button>
+								</div>
 
 								{/* <div id="shoppingCart">
 				<div className="row">
