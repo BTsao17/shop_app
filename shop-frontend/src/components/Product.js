@@ -9,8 +9,7 @@ import {
 	CardMedia,
 	Button,
 	Typography,
-	withStyles,
-	FormHelperText
+	withStyles
 } from '@material-ui/core'
 
 const styles = {
