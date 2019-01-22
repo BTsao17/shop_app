@@ -67,10 +67,6 @@ class Cart extends Component {
 		const calculatePST = PST_Rate * invoiceSubtotal
 		const invoiceTotal = invoiceSubtotal + calculateGST + calculatePST
 
-		// const addTotalQuantity = purchaseItems.reduce((accumulator, currentV) => {
-		// 	return accumulator + currentV.quantity
-		// }, 0)
-
 		return (
 			<div>
 				<Grid container>
@@ -128,20 +124,6 @@ class Cart extends Component {
 										Proceed to Checkout
 									</Button>
 								</div>
-
-								{/* <div id="shoppingCart">
-				<div className="row">
-					<div className="col">
-						<h2 className="text-center">Shopping Cart ({addTotalQuantity})</h2>
-					</div>
-				</div>
-				<div className="row">{itemsList}</div>
-				<div className="row">
-					<div className="col">
-						<h4 className="text-center">Subtotal: {addSubtotal.toFixed(2)}</h4>
-					</div>
-				</div>
-			</div> */}
 							</Paper>
 						</div>
 					</Grid>

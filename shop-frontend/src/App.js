@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Switch, Link, Redirect } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 // import './App.css'
 import { Home, Shop, Header, Cart } from './components'
 import axios from 'axios'
@@ -45,7 +45,7 @@ class App extends Component {
 
 	componentDidUpdate() {
 		axios.post('http://localhost:8080/cart', this.state.shoppingCart).then((response) => {
-			// console.log(response.data)
+			console.log(response.data)
 		})
 	}
 
@@ -102,29 +102,12 @@ class App extends Component {
 			return accumulator + currentV.quantity
 		}, 0)
 
-		console.log(quantityInCart)
+		// console.log(quantityInCart)
 
 		return (
 			<React.Fragment>
 				<CssBaseline />
 				<Header logOut={this.logOut} quantityInCart={quantityInCart} />
-				{/* <nav>
-					<span>Stationery Emporium</span>
-					<div>
-						<ul>
-							<li>
-								<Link to="/">
-									Home
-								</Link>
-							</li>
-							<li>
-								<Link to="/shop">
-									Shop
-								</Link>
-							</li>
-						</ul>
-					</div>
-				</nav> */}
 
 				<Switch>
 					<Route
@@ -141,7 +124,6 @@ class App extends Component {
 								<Shop
 									username={username}
 									loggedIn={loggedIn}
-									// logOut={this.logOut}
 									{...renderProps}
 									addItemToCart={this.addItemToCart}
 								/>

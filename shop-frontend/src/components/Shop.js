@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Switch, Link } from 'react-router-dom'
-import { ProductsList, Cart } from './'
+import { ProductsList } from './'
 import axios from 'axios'
 
 import PropTypes from 'prop-types'
@@ -20,43 +20,7 @@ class Shop extends Component {
 	state = {
 		inkProducts: [],
 		penProducts: [],
-		// shoppingCart: []
 	}
-
-	// addItemToCart = (itemInfo) => {
-	// 	const findDuplicate = this.state.shoppingCart.find((product) => {
-	// 		return product.name === itemInfo.name
-	// 	})
-
-	// 	if (!findDuplicate) {
-	// 		const newCart = this.state.shoppingCart.concat([ { ...itemInfo, quantity: 1 } ])
-
-	// 		this.setState({
-	// 			shoppingCart: newCart
-	// 		})
-	// 	}
-	// 	else {
-	// 		const newCart = this.state.shoppingCart.map((product) => {
-	// 			if (product.name === itemInfo.name) {
-	// 				product = { ...product, quantity: product.quantity + 1 }
-	// 				return product
-	// 			}
-	// 			else {
-	// 				return product
-	// 			}
-	// 		})
-
-	// 		this.setState({
-	// 			shoppingCart: newCart
-	// 		})
-	// 	}
-	// }
-
-	// componentDidUpdate() {
-	// 	axios.post('http://localhost:8080/cart', this.state.shoppingCart).then((response) => {
-	// 		// console.log(response.data) 
-	// 	})
-	// }
 
 	componentDidMount() {
 		axios.get('http://localhost:8080/products').then((response) => {
@@ -65,12 +29,6 @@ class Shop extends Component {
 				penProducts: response.data.penProducts
 			})
 		})
-
-		// axios.get('http://localhost:8080/cart').then((response) => {
-		// 	this.setState({
-		// 		shoppingCart: response.data
-		// 	})
-		// })
 	}
 
 	render() {
@@ -85,19 +43,6 @@ class Shop extends Component {
 						<Typography variant="h4" align="center" className={classes.welcomePadding}>
 							Welcome {this.props.username}!
 						</Typography>
-						{/* <h5>
-							Not {this.props.username}?
-							<button type="submit" onClick={() => this.props.logOut()}>
-								Logout
-							</button>
-						</h5>
-						<h4>
-							<span>Are you looking for.....</span>
-							<Link to={match.url + '/fountain_pens'}>Fountain Pens</Link>
-							<span> or </span>
-							<Link to={match.url + '/inks'}>Inks</Link>
-							<span>? </span>
-						</h4> */}
 					
 						<Switch>
 							<Route
@@ -125,8 +70,6 @@ class Shop extends Component {
 								}}
 							/>
 						</Switch>
-		
-						{/* <Cart purchaseItems={this.state.shoppingCart} /> */}
 			</div>
 		)
 	}
@@ -170,8 +113,6 @@ class ShopNavBar extends Component {
 		const { match, classes } = this.props
 		const { value } = this.state
 
-		// console.log(match)
-
 		return (
 			<React.Fragment>
 					<AppBar className={classes.shopNavPadding} position="static" color="default">
@@ -185,9 +126,6 @@ class ShopNavBar extends Component {
 								<ProductLinkTab value="fpen" label="Fountain Pens" to={match.url + '/fountain_pens'} />
 								<ProductLinkTab value="ink" label="Inks" to={match.url + '/inks'} />
 							</Tabs>
-							{/* not working because of the match.url? since we said to requires string.
-              or because Router Props?  Maybe try just putting this directly in the Shop component
-              rather than separating it yet? */}
 					</AppBar>
 			</React.Fragment>
 		)

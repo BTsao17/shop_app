@@ -60,15 +60,6 @@ class Product extends Component {
 							</Button>
 						</CardActions>
 					</Card>
-
-					{/* <div className="card">
-						<img className="card-img-top img-fluid" src={this.props.item.picture} alt={this.props.item.name} />
-						<div className="card-body">
-							<h5 className="card-title">{this.props.item.name}</h5>
-							<p className="card-text">Price: ${this.props.item.price.toFixed(2)}</p>
-							<button onClick={this.addToCart}>Add to Cart</button>
-						</div>
-					</div> */}
 				</Grid>
 			</React.Fragment>
 		)
