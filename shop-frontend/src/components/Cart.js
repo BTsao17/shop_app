@@ -1,11 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { CartItem } from './'
-import '../css/Cart.css'
-
-import PropTypes from 'prop-types'
 import {
-	withStyles,
 	Table,
 	TableBody,
 	TableCell,
@@ -16,36 +11,11 @@ import {
 	Grid,
 	Button
 } from '@material-ui/core'
+import { CartItem } from './'
+import '../css/Cart.css'
 
 const PST_Rate = 0.07
 const GST_Rate = 0.05
-
-// const styles = (theme) => ({
-// 	root: {
-// 		width: '90%',
-// 		marginTop: theme.spacing.unit * 3,
-// 		marginBottom: theme.spacing.unit * 5,
-// 		overflowX: 'auto'
-// 	},
-// 	table: {
-// 		minWidth: '50%',
-// 		overflowX: 'auto'
-// 	},
-// 	display: {
-// 		display: 'flex',
-// 		justifyContent: 'center'
-// 	},
-// 	titlePadding: {
-// 		paddingTop: 80
-// 	},
-// 	button: {
-// 		margin: theme.spacing.unit
-// 	},
-// 	buttonDisplay: {
-// 		display: 'flex',
-// 		justifyContent: 'flex-end'
-// 	}
-// })
 
 class Cart extends Component {
 	priceRow = (qty, unit) => {
@@ -53,7 +23,7 @@ class Cart extends Component {
 	}
 
 	render() {
-		const { classes, purchaseItems } = this.props
+		const { purchaseItems } = this.props
 
 		const itemsList = purchaseItems.map((item) => {
 			const itemSubtotal = this.priceRow(item.quantity, item.price).toFixed(2)
@@ -134,9 +104,5 @@ class Cart extends Component {
 		)
 	}
 }
-// Cart.propTypes = {
-// 	classes: PropTypes.object.isRequired
-// }
 
 export default Cart
-// export default withStyles(styles)(Cart)

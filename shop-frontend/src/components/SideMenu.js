@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { List, ListItem, ListItemText, Divider } from '@material-ui/core'
 
 const SideMenu = (props) => {
-  // const {classes} = props
 
   return (
     <div className='sideMenuList'>
@@ -25,9 +24,6 @@ const SideMenu = (props) => {
 			</div>
   )
 }
-// SideMenu.propTypes = {
-//   classes: PropTypes.object.isRequired
-// }
 
 const SideMenuLink = (props) => {
 	const { primary, to } = props

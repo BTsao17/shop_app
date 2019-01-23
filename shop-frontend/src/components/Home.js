@@ -1,23 +1,8 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
-import { Grid, Typography, withStyles, FormControl, Input, InputLabel, Button } from '@material-ui/core'
-
+import { Grid, Typography, FormControl, Input, InputLabel, Button } from '@material-ui/core'
 import '../css/Home.css'
 
-// const styles = {
-// 	welcomePadding: {
-// 		paddingTop: 75
-// 	},
-// 	loginForm: {
-// 		display: 'flex',
-// 		alignItems: 'center',
-// 		justifyContent: 'center',
-// 		width: '100%'
-// 	}
-// }
-
 const Home = (props) => {
-	// const { classes } = props
 
 	return (
 		<div>
@@ -48,10 +33,4 @@ const Home = (props) => {
 	)
 }
 
-//used for stylistic purposes
-// Home.propTypes = {
-// 	classes: PropTypes.object.isRequired
-// }
-
-// export default withStyles(styles)(Home)
 export default Home

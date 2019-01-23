@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-
-import PropTypes from 'prop-types'
 import {
 	Grid,
 	Card,
@@ -9,23 +7,7 @@ import {
 	CardMedia,
 	Button,
 	Typography,
-	withStyles
 } from '@material-ui/core'
-
-// const styles = {
-// 	card: {
-// 		maxWidth: 370
-// 	},
-// 	media: {
-// 		objectFit: 'cover'
-// 	},
-// 	root: {
-// 		display: 'inlineBlock'
-// 	},
-// 	cardContent: {
-// 		minHeight: 140
-// 	}
-// }
 
 class Product extends Component {
 	addToCart = (e) => {
@@ -33,7 +15,7 @@ class Product extends Component {
 	}
 
 	render() {
-		const { classes, item } = this.props
+		const { item } = this.props
 
 		return (
 			<React.Fragment>
@@ -65,9 +47,5 @@ class Product extends Component {
 		)
 	}
 }
-// Product.propTypes = {
-// 	classes: PropTypes.object.isRequired
-// }
 
 export default Product
-// export default withStyles(styles)(Product)
