@@ -44,9 +44,13 @@ class App extends Component {
 	}
 
 	componentDidUpdate() {
-		axios.post('http://localhost:8080/cart', this.state.shoppingCart).then((response) => {
-			console.log(response.data)
-		})
+		//this takes care of both adding and deleting an item from the cart
+		axios
+			.post('http://localhost:8080/cart', this.state.shoppingCart)
+			.then((response) => {
+				// console.log(response.data)
+			})
+			.catch((err) => console.log(err))
 	}
 
 	logOut = () => {
@@ -54,16 +58,19 @@ class App extends Component {
 		this.setState(
 			{
 				username: '',
-				loggedIn: false
+				loggedIn: false,
+				shoppingCart: []
 			},
+			//may be unnecessary since we've set the state which will evoke componentDidUpdate and clear it already.
 			() => this.clearCart()
 		)
 	}
 
 	clearCart = () => {
-		axios.post('http://localhost:8080/clear', []).then((response) => {
-			console.log(response.data)
-		})
+		axios
+			.delete('http://localhost:8080/clear', this.state.shoppingCart)
+			.then((response) => console.log(response.data))
+			.catch((err) => console.log(err))
 	}
 
 	addItemToCart = (itemInfo) => {
@@ -95,6 +102,23 @@ class App extends Component {
 		}
 	}
 
+	removeItem = (itemInfo) => {
+		const { shoppingCart } = this.state
+		// console.log(itemInfo)
+		const updatedCart = shoppingCart.filter((item) => {
+			// if (item.name === itemInfo.name) {
+			//   axios.delete('http://localhost:8080/cart', itemInfo.name)
+			//   .then((response) => console.log(response.data))
+			//   .catch((err) => {console.log(err)})
+			// }
+			return item.name !== itemInfo.name
+		})
+		// console.log(updatedCart)
+		this.setState({
+			shoppingCart: updatedCart
+		})
+	}
+
 	render() {
 		const { username, loggedIn, shoppingCart } = this.state
 
@@ -120,27 +144,25 @@ class App extends Component {
 					<Route
 						path="/shop"
 						render={(renderProps) => {
-							return loggedIn ? 
-								<Shop
-									username={username}
-									loggedIn={loggedIn}
-									{...renderProps}
-									addItemToCart={this.addItemToCart}
-								/>
-							 : 
+							return loggedIn ? (
+								<Shop username={username} loggedIn={loggedIn} addItemToCart={this.addItemToCart} {...renderProps} />
+							) : (
 								<Redirect to="/" exact />
-							
+							)
 						}}
 					/>
 					<Route
 						path="/cart"
 						render={(renderProps) => {
-							return loggedIn ? 
-              <Cart 
-              purchaseItems={shoppingCart} 
-              {...renderProps} //might need this when I want to mock-up check-out
-              /> : 
-              <Redirect to="/" exact />
+							return loggedIn ? (
+								<Cart
+									purchaseItems={shoppingCart}
+									removeItem={this.removeItem}
+									{...renderProps} //might need this when I want to mock-up check-out
+								/>
+							) : (
+								<Redirect to="/" exact />
+							)
 						}}
 					/>
 				</Switch>

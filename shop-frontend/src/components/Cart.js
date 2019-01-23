@@ -41,8 +41,8 @@ const styles = (theme) => ({
 		margin: theme.spacing.unit
 	},
 	buttonDisplay: {
-    display: 'flex',
-    justifyContent: 'flex-end'
+		display: 'flex',
+		justifyContent: 'flex-end'
 	}
 })
 
@@ -56,7 +56,7 @@ class Cart extends Component {
 
 		const itemsList = purchaseItems.map((item) => {
 			const itemSubtotal = this.priceRow(item.quantity, item.price).toFixed(2)
-			return <CartItem key={item.name} item={item} itemSubtotal={itemSubtotal} />
+			return <CartItem key={item.name} item={item} itemSubtotal={itemSubtotal} removeItem={this.props.removeItem} />
 		})
 
 		const invoiceSubtotal = purchaseItems
@@ -86,41 +86,41 @@ class Cart extends Component {
 											<TableCell align="right">Quantity</TableCell>
 											<TableCell align="right">Unit Price</TableCell>
 											<TableCell align="right">Price</TableCell>
+											<TableCell />
 										</TableRow>
 									</TableHead>
 									<TableBody>
 										{itemsList}
 										<TableRow>
-											<TableCell rowSpan={4} />
+											<TableCell rowSpan={5} />
 											<TableCell colSpan={2}>Subtotal</TableCell>
 											<TableCell align="right">${invoiceSubtotal.toFixed(2)}</TableCell>
+											<TableCell />
 										</TableRow>
 										<TableRow>
 											<TableCell>GST</TableCell>
 											<TableCell align="right">{(GST_Rate * 100).toFixed(0)} %</TableCell>
 											<TableCell align="right">${calculateGST.toFixed(2)}</TableCell>
+											<TableCell />
 										</TableRow>
 										<TableRow>
 											<TableCell>PST</TableCell>
 											<TableCell align="right">{(PST_Rate * 100).toFixed(0)} %</TableCell>
 											<TableCell align="right">${calculatePST.toFixed(2)}</TableCell>
+											<TableCell />
 										</TableRow>
 										<TableRow>
 											<TableCell colSpan={2}>Total</TableCell>
 											<TableCell align="right">${invoiceTotal.toFixed(2)}</TableCell>
+											<TableCell />
 										</TableRow>
 									</TableBody>
 								</Table>
 								<div className={classes.buttonDisplay}>
-									<Button variant="outlined" size="small" className={classes.button} component={Link} to='/shop'>
+									<Button variant="outlined" size="small" className={classes.button} component={Link} to="/shop">
 										Continue Shopping
 									</Button>
-									<Button
-										variant="contained"
-										size="small"
-										className={classes.button}
-										color="primary"
-									>
+									<Button variant="contained" size="small" className={classes.button} color="primary">
 										Proceed to Checkout
 									</Button>
 								</div>
