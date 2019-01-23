@@ -5,6 +5,8 @@ import Product from './Product'
 import Cart from './Cart'
 import CartItem from './CartItem'
 import Header from './Header'
+import ShopNavBar from './ShopNavBar'
+import SideMenu from './SideMenu'
 
 export {
     Home,
@@ -13,5 +15,7 @@ export {
     Product, 
     Cart,
     CartItem,
-    Header
+    Header,
+    ShopNavBar,
+    SideMenu
 }

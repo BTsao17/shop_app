@@ -1,0 +1,28 @@
+.titlePadding {
+  padding-top: 80px;
+}
+
+.cart--display {
+  display: flex;
+  justify-content: center;
+}
+
+.cart__paper--sizing {
+  width: 90%;
+  margin-top: 24px;
+  margin-bottom: 40px;
+  overflow-x: auto;
+}
+
+.cart__paper__table--width {
+  min-width: 50%;
+  overflow-x: auto;
+}
+
+.button--display {
+  text-align: right;
+}
+
+#root .button--margin {
+  margin: 8px;
+}

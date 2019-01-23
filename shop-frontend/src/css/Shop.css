@@ -1,0 +1,51 @@
+/* const styles = {
+	shopNavMargin: {
+    marginTop: 64
+  }, 
+  welcomePadding: {
+    paddingTop: 145, 
+    paddingBottom: 10
+  }
+} */
+
+/* const styles = {
+	card: {
+		maxWidth: 370
+	},
+	media: {
+		objectFit: 'cover'
+	},
+	root: {
+		display: 'inlineBlock'
+	},
+	cardContent: {
+		minHeight: 140
+	}
+} */
+
+
+.title--padding {
+  padding-top: 145px;
+  padding-bottom: 10px;
+}
+
+.shop__nav--margin {
+  margin-top: 64px;
+}
+
+.grid--padding {
+  padding: 40px;
+}
+
+.card--display {
+  display: inline-block;
+  max-width: 370px;
+}
+
+.image--fit {
+  object-fit: cover;
+}
+
+.cardContent--height {
+  min-height: 140px;
+}

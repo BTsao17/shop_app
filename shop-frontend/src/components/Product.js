@@ -12,20 +12,20 @@ import {
 	withStyles
 } from '@material-ui/core'
 
-const styles = {
-	card: {
-		maxWidth: 370
-	},
-	media: {
-		objectFit: 'cover'
-	},
-	root: {
-		display: 'inlineBlock'
-	},
-	cardContent: {
-		minHeight: 140
-	}
-}
+// const styles = {
+// 	card: {
+// 		maxWidth: 370
+// 	},
+// 	media: {
+// 		objectFit: 'cover'
+// 	},
+// 	root: {
+// 		display: 'inlineBlock'
+// 	},
+// 	cardContent: {
+// 		minHeight: 140
+// 	}
+// }
 
 class Product extends Component {
 	addToCart = (e) => {
@@ -38,15 +38,15 @@ class Product extends Component {
 		return (
 			<React.Fragment>
 				<Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-					<Card className={(classes.card, classes.root)}>
+					<Card className='card--display'>
 						<CardMedia
 							component="img"
 							alt={item.name}
-							className={classes.media}
+							className='image--fit'
 							image={item.picture}
 							title={item.name}
 						/>
-						<CardContent className={classes.cardContent}>
+						<CardContent className='cardContent--height'>
 							<Typography gutterBottom variant="h6" component="h3">
 								{item.name}
 							</Typography>
@@ -65,9 +65,9 @@ class Product extends Component {
 		)
 	}
 }
-Product.propTypes = {
-	classes: PropTypes.object.isRequired
-}
+// Product.propTypes = {
+// 	classes: PropTypes.object.isRequired
+// }
 
-// export default Product
-export default withStyles(styles)(Product)
+export default Product
+// export default withStyles(styles)(Product)
