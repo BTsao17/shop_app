@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, IconButton, Badge, Drawer } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCartOutlined';
-import { SideMenu } from './';
-import '../css/Header.css';
+import SideMenu from './SideMenu';
+import '../../css/Header.css';
 
 class Header extends Component {
   state = {

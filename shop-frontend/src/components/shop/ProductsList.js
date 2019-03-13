@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid } from '@material-ui/core';
-import { Product } from './';
+import Product from './Product';
 
 class ProductsList extends Component {
   render() {

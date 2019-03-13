@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import { Typography } from '@material-ui/core';
-import { ProductsList, ShopNavBar } from './';
-import '../css/Shop.css';
+import ShopNavBar from './ShopNavBar';
+import ProductsList from './ProductsList';
+import '../../css/Shop.css';
 
 class Shop extends Component {
   state = {

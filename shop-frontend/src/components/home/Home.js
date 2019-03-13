@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Typography, FormControl, Input, InputLabel, Button } from '@material-ui/core';
-import '../css/Home.css';
+import '../../css/Home.css';
 
 const Home = (props) => {
   return (

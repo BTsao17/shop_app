@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Paper, Typography, Stepper, Step, StepLabel, Button } from '@material-ui/core';
-import { AddressForm, PaymentForm, ReviewCheckout } from './';
+import AddressForm from './AddressForm';
+import PaymentForm from './PaymentForm';
+import ReviewCheckout from './ReviewCheckout';
 
 class Checkout extends Component {
   state = {

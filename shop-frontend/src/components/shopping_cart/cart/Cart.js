@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Table, TableBody, TableCell, TableHead, TableRow, Paper, Typography, Grid, Button } from '@material-ui/core';
-import { CartItem } from './';
-import '../css/Cart.css';
+import CartItem from './CartItem';
+import '../../../css/Cart.css';
 
 const PST_Rate = 0.07;
 const GST_Rate = 0.05;
