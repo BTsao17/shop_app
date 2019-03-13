@@ -7,3 +7,5 @@ Further improvements to be made:
   - Edit quantity of items in cart
   - Favourite items in shop
   - Save items in cart for future purchases
+- Mock-up Payment Page
+  - input validations for user info

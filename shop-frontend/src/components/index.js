@@ -7,6 +7,11 @@ import CartItem from './CartItem'
 import Header from './Header'
 import ShopNavBar from './ShopNavBar'
 import SideMenu from './SideMenu'
+import ShoppingCart from './ShoppingCart'
+import Checkout from './Checkout'
+import AddressForm from './AddressForm'
+import PaymentForm from './PaymentForm'
+import ReviewCheckout from './ReviewCheckout'
 
 export {
     Home,
@@ -17,5 +22,10 @@ export {
     CartItem,
     Header,
     ShopNavBar,
-    SideMenu
+    SideMenu, 
+    ShoppingCart,
+    Checkout,
+    AddressForm,
+    PaymentForm,
+    ReviewCheckout
 }
