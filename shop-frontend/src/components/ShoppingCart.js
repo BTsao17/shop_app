@@ -26,7 +26,7 @@ class ShoppingCart extends Component {
           <Route
             path={match.path + '/checkout'}
             render={() => {
-              return <Checkout purchasedItems={purchasedItems} clearCart={this.props.clearCart}/>;
+              return <Checkout purchasedItems={purchasedItems} clearCart={this.props.clearCart} />;
             }}
           />
         </Switch>

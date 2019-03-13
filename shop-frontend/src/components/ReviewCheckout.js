@@ -99,16 +99,9 @@ class ReviewCheckout extends Component {
             <Typography variant="h6" gutterBottom>
               Payment Details
             </Typography>
-            <Typography gutterBottom>
-              Card holder: {paymentInfo.cardName}
-            </Typography>
-            <Typography gutterBottom>
-              Card number: {paymentInfo.cardNumber}
-            </Typography>
-            <Typography gutterBottom>
-              Expiry date: {paymentInfo.expDate}
-            </Typography>
-
+            <Typography gutterBottom>Card holder: {paymentInfo.cardName}</Typography>
+            <Typography gutterBottom>Card number: {paymentInfo.cardNumber}</Typography>
+            <Typography gutterBottom>Expiry date: {paymentInfo.expDate}</Typography>
           </Grid>
         </Grid>
       </React.Fragment>
