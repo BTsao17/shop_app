@@ -20,26 +20,30 @@ const GST_Rate = 0.05
 class Cart extends Component {
 	priceRow = (qty, unit) => {
 		return qty * unit
-	}
+  }
 
 	render() {
-		const { purchaseItems } = this.props
+		const { purchasedItems, match } = this.props
 
-		const itemsList = purchaseItems.map((item) => {
+    //avoiding property collision and unexpected unmounting with using inline Links
+    const goBackToShopLink = props => <Link to='/shop' {...props} />
+    const checkoutLink = props => <Link to={match.url + '/checkout'} {...props} />
+
+		const itemsTableRow = purchasedItems.map((item) => {
 			const itemSubtotal = this.priceRow(item.quantity, item.price).toFixed(2)
 			return <CartItem key={item.name} item={item} itemSubtotal={itemSubtotal} removeItem={this.props.removeItem} />
 		})
 
-		const invoiceSubtotal = purchaseItems
+		const invoiceSubtotal = purchasedItems
 			.map((item) => this.priceRow(item.quantity, item.price))
 			.reduce((sum, i) => sum + i, 0)
 
 		const calculateGST = GST_Rate * invoiceSubtotal
 		const calculatePST = PST_Rate * invoiceSubtotal
-		const invoiceTotal = invoiceSubtotal + calculateGST + calculatePST
-
+    const invoiceTotal = invoiceSubtotal + calculateGST + calculatePST
+    
 		return (
-			<div>
+			<React.Fragment>
 				<Grid container>
 					<Grid item xs={12}>
 						<Typography className="titlePadding" variant="h4" component="h2" align="center">
@@ -48,7 +52,7 @@ class Cart extends Component {
 					</Grid>
 					<Grid item md={1} lg={2} xl={3} />
 					<Grid item xs={12} s={12} md={10} lg={8} xl={6}>
-						<div className="cart--display">
+						<main className="cart--display">
 							<Paper className="cart__paper--sizing">
 								<Table className="cart__paper__table--width">
 									<TableHead>
@@ -61,9 +65,9 @@ class Cart extends Component {
 										</TableRow>
 									</TableHead>
 									<TableBody>
-										{itemsList}
+										{itemsTableRow}
 										<TableRow>
-											<TableCell rowSpan={5} />
+											<TableCell rowSpan={4} />
 											<TableCell colSpan={2}>Subtotal</TableCell>
 											<TableCell align="right">${invoiceSubtotal.toFixed(2)}</TableCell>
 											<TableCell />
@@ -88,19 +92,19 @@ class Cart extends Component {
 									</TableBody>
 								</Table>
 								<div className="button--display">
-										<Button variant="outlined" size="small" className="button--margin" component={Link} to="/shop">
+										<Button variant="outlined" size="small" className="button--margin" component={goBackToShopLink}>
 											Continue Shopping
 										</Button>
-										<Button variant="contained" size="small" className="button--margin" color="primary">
+										<Button variant="contained" size="small" className="button--margin" color="primary" component={checkoutLink}>
 											Proceed to Checkout
 										</Button>
 								</div>
 							</Paper>
-						</div>
+						</main>
 					</Grid>
 					<Grid item md={1} lg={2} xl={3} />
 				</Grid>
-			</div>
+        </React.Fragment>
 		)
 	}
 }

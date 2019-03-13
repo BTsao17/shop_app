@@ -18,6 +18,10 @@ class Header extends Component {
 	}
 
 	render() {
+
+    //to avoid property collision and unexpected un-mounting with using inline: component={Link} to='/cart'
+    const toShoppingCartLink = props => <Link to='/cart' {...props} />
+
 		return (
 			<React.Fragment>
 				<div className="navBar--root">
@@ -41,8 +45,7 @@ class Header extends Component {
 							<Typography variant="h6" color="inherit" className="grow">
 								The Stationery Emporium
 							</Typography>
-							<IconButton color="inherit" className="cartButton" aria-label="Shopping Cart" component={Link} to="/cart">
-								{/* not sure if adding component={Link} is normal practice to allow icon buttons to work as links without onClick */}
+							<IconButton color="inherit" className="cartButton" aria-label="Shopping Cart" component={toShoppingCartLink}>
 								<Badge badgeContent={this.props.quantityInCart} color="secondary">
 									<ShoppingCartIcon />
 								</Badge>

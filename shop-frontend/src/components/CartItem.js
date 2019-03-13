@@ -7,7 +7,7 @@ const CartItem = (props) => {
 
 	return (
 		<TableRow>
-			<TableCell>{props.item.name}</TableCell>
+			<TableCell>{item.name}</TableCell>
 			<TableCell align="right">{item.quantity}</TableCell>
 			<TableCell align="right">${item.price.toFixed(2)}</TableCell>
 			<TableCell align="right">${itemSubtotal}</TableCell>
