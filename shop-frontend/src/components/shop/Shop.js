@@ -4,7 +4,6 @@ import axios from 'axios';
 import { Typography } from '@material-ui/core';
 import ShopNavBar from './ShopNavBar';
 import ProductsList from './ProductsList';
-import '../../css/Shop.css';
 
 class Shop extends Component {
   state = {

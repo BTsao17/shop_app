@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-// import './App.css'
+import './App.css'
 import { Home, Shop, Header, ShoppingCart } from './components';
 import axios from 'axios';
 import { CssBaseline } from '@material-ui/core';

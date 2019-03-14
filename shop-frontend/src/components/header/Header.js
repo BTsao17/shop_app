@@ -4,7 +4,6 @@ import { AppBar, Toolbar, Typography, IconButton, Button, Badge, Drawer, Hidden 
 import MenuIcon from '@material-ui/icons/Menu';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCartOutlined';
 import SideMenu from './SideMenu';
-import '../../css/Header.css';
 
 class Header extends Component {
   state = {
@@ -19,7 +18,7 @@ class Header extends Component {
 
   render() {
     const { logInStatus, logOut } = this.props;
-    console.log(logInStatus);
+
     //to avoid property collision and unexpected un-mounting with using inline: component={Link} to='/cart'
     const toShoppingCartLink = (props) => <Link to="/cart" {...props} />;
     const toShopLink = (props) => <Link to="/shop" {...props} />;
@@ -57,14 +56,24 @@ class Header extends Component {
               <Typography variant="h6" color="inherit" className="grow">
                 The Stationery Emporium
               </Typography>
-              
+
               {logInStatus === true && (
                 <React.Fragment>
                   <Hidden smDown>
-                    <Button color="inherit" aria-label="Shop Page" component={toShopLink}>
+                    <Button
+                      className="shopPageButton--spacing"
+                      color="inherit"
+                      aria-label="Shop Page"
+                      component={toShopLink}
+                    >
                       Shop
                     </Button>
-                    <Button color="inherit" aria-label="Log Out" onClick={() => logOut()}>
+                    <Button
+                      className="logOutButton--spacing"
+                      color="inherit"
+                      aria-label="Log Out"
+                      onClick={() => logOut()}
+                    >
                       Logout
                     </Button>
                   </Hidden>

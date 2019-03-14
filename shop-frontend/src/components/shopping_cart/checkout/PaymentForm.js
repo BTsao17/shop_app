@@ -19,7 +19,7 @@ class PaymentForm extends Component {
               required
               id="cardName"
               name="cardName"
-              label="Name on card"
+              label="name on card"
               type="string"
               fullWidth
               value={this.props.paymentInfo.cardName}
@@ -31,8 +31,7 @@ class PaymentForm extends Component {
               required
               id="cardNumber"
               name="cardNumber"
-              type="number"
-              label="Card number"
+              label="card number"
               fullWidth
               value={this.props.paymentInfo.cardNumber}
               onChange={this.onPaymentChange}
@@ -43,7 +42,7 @@ class PaymentForm extends Component {
               required
               id="expDate"
               name="expDate"
-              label="Expiry date"
+              label="expiry date"
               placeholder="MM/YY"
               fullWidth
               value={this.props.paymentInfo.expDate}
@@ -55,7 +54,6 @@ class PaymentForm extends Component {
               required
               id="cvv"
               name="cvv"
-              type="number"
               label="CVV"
               helperText="Last three digits on signature strip"
               fullWidth

@@ -1,0 +1,137 @@
+#root .menuButton {
+  margin-left: -12px;
+  margin-right: 8px;
+}
+
+#root .cartButton {
+  margin-left: 8px;
+}
+
+#root .shopPageButton--spacing {
+  margin: 0px 10px;
+  padding: 6px 25px;
+}
+
+#root .logOutButton--spacing {
+  margin: 0px 10px;
+  padding: 6px 17px;
+}
+
+.navBar--root,
+.grow {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.sideMenuList {
+  width: 200px;
+}
+
+.welcomePadding {
+  padding-top: 75px;
+}
+
+.loginForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.title--padding {
+  padding-top: 145px;
+  padding-bottom: 10px;
+}
+
+.shop__nav--margin {
+  margin-top: 56px;
+}
+
+.grid--padding {
+  padding: 40px;
+}
+
+.image--fit {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.productCard--justify {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.cardContent--height {
+  min-height: 140px;
+}
+
+#root .cart__button--margin {
+  margin: 14px 0px 0px 14px;
+}
+
+.cart__paper--sizing {
+  padding: 14px;
+}
+
+.cart__paper__table--width {
+  min-width: 50%;
+  overflow-x: auto;
+}
+
+.checkout__paper--sizing {
+  padding: 24px;
+}
+
+#root .checkout__button--margin {
+  margin: 24px 0px 0px 24px;
+}
+
+#root .addressCheckbox--padding {
+  padding: 6px 12px 0px 12px;
+}
+
+#root .stepper--padding {
+  padding: 24px 0px;
+}
+
+.shoppingCartTitle-padding {
+  padding-top: 80px;
+}
+
+.cart--display,
+.checkout--display {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.cart__paper--sizing,
+.checkout__paper--sizing {
+  width: 90%;
+  margin-top: 24px;
+  margin-bottom: 40px;
+  overflow-x: auto;
+}
+
+.button--display {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+/*# sourceMappingURL=App.css.map */

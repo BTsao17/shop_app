@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Table, TableBody, TableCell, TableHead, TableRow, Paper, Typography, Grid, Button } from '@material-ui/core';
 import CartItem from './CartItem';
-import '../../../css/Cart.css';
+// import '../../../css/Cart.css';
 
 const PST_Rate = 0.07;
 const GST_Rate = 0.05;
@@ -36,7 +36,7 @@ class Cart extends Component {
       <React.Fragment>
         <Grid container>
           <Grid item xs={12}>
-            <Typography className="titlePadding" variant="h4" component="h2" align="center">
+            <Typography className="shoppingCartTitle-padding" variant="h4" component="h2" align="center">
               Shopping Cart
             </Typography>
           </Grid>

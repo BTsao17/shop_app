@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 
 import Cart from './cart/Cart';
 import Checkout from './checkout/Checkout';
-import '../../css/ShoppingCart.css';
 
 class ShoppingCart extends Component {
   render() {

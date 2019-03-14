@@ -11,20 +11,15 @@
   padding: 40px;
 }
 
-/* .card--display {
-  display: inline-block;
-  max-width: 370px;
-} */
-
 .image--fit {
   object-fit: cover;
-}
-
-.cardContent--height {
-  min-height: 140px;
 }
 
 .productCard--justify {
   display: flex;
   justify-content: center;
+}
+
+.cardContent--height {
+  min-height: 140px;
 }

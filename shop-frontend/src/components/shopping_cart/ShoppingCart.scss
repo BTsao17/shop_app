@@ -1,4 +1,7 @@
-.titlePadding {
+@import 'cart/Cart';
+@import 'checkout/Checkout';
+
+.shoppingCartTitle-padding {
   padding-top: 80px;
 }
 
@@ -17,7 +20,6 @@
 }
 
 .button--display {
-  /* text-align: right; */
   display: flex;
- justify-content: flex-end;
+  justify-content: flex-end;
 }

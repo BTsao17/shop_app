@@ -4,7 +4,6 @@ import { Grid, Paper, Typography, Stepper, Step, StepLabel, Button } from '@mate
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import ReviewCheckout from './ReviewCheckout';
-import '../../../css/Checkout.css';
 
 class Checkout extends Component {
   state = {
@@ -124,7 +123,7 @@ class Checkout extends Component {
       <React.Fragment>
         <Grid container>
           <Grid item xs={12}>
-            <Typography className="titlePadding" variant="h4" component="h2" align="center">
+            <Typography className="shoppingCartTitle-padding" variant="h4" component="h2" align="center">
               Checkout
             </Typography>
           </Grid>
@@ -132,7 +131,7 @@ class Checkout extends Component {
           <Grid item xs={12} s={12} md={10} lg={8} xl={6}>
             <main className="checkout--display">
               <Paper className="checkout__paper--sizing">
-                <Stepper activeStep={activeStep} alternativeLabel>
+                <Stepper className="stepper--padding" activeStep={activeStep} alternativeLabel>
                   {steps.map((label) => (
                     <Step key={label}>
                       <StepLabel>{label}</StepLabel>
