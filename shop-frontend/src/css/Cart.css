@@ -2,16 +2,13 @@
   padding-top: 80px;
 } */
 
-.cart--display {
+/* .cart--display {
   display: flex;
   justify-content: center;
-}
+} */
 
 .cart__paper--sizing {
-  width: 90%;
-  margin-top: 24px;
-  margin-bottom: 40px;
-  overflow-x: auto;
+  padding: 14px;
 }
 
 .cart__paper__table--width {
@@ -19,10 +16,10 @@
   overflow-x: auto;
 }
 
-.button--display {
+/* .button--display {
   text-align: right;
-}
+} */
 
-#root .button--margin {
-  margin: 8px;
+#root .cart__button--margin {
+  margin: 14px 0px 0px 14px;
 }

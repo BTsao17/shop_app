@@ -4,6 +4,7 @@ import { Grid, Paper, Typography, Stepper, Step, StepLabel, Button } from '@mate
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import ReviewCheckout from './ReviewCheckout';
+import '../../../css/Checkout.css';
 
 class Checkout extends Component {
   state = {
@@ -94,13 +95,6 @@ class Checkout extends Component {
     this.setState({ [infoType]: newInfo }, () => {
       this.copyAddress();
     });
-
-    //this will throw an error:
-    // this.setState({
-    //   [infoType]: {
-    //     [e.target.name]: e.target.value,
-    //   }
-    // });
   };
 
   handleCheckboxChange = (e) => {
@@ -134,47 +128,67 @@ class Checkout extends Component {
               Checkout
             </Typography>
           </Grid>
-          <Grid item />
-          <Paper>
-            <Stepper activeStep={activeStep}>
-              {steps.map((label) => (
-                <Step key={label}>
-                  <StepLabel>{label}</StepLabel>
-                </Step>
-              ))}
-            </Stepper>
-            <div>
-              {activeStep === steps.length ? (
-                <React.Fragment>
-                  <Typography variant="h5" gutterBottom>
-                    Thank you for your order.
-                  </Typography>
-                  <Typography variant="subtitle1">
-                    Your order number is ___. We hav emailed your order confirmation, and will send you an update when
-                    your order has shipped.
-                  </Typography>
-                  <div>
-                    <Button variant="contained" color="primary" aria-label="Back to Shop" component={toShopLink}>
-                      Back to Shop
-                    </Button>
-                  </div>
-                </React.Fragment>
-              ) : (
-                <React.Fragment>
-                  {this.getStepContent(activeStep)}
-                  <div>
-                    {/* a way to hide buttons using activeStep state and && operator */}
-                    {activeStep !== 0 && <Button onClick={() => this.handleStep(-1)}>Back</Button>}
-                    <Button variant="contained" color="primary" onClick={() => this.handleStep(1)}>
-                      {/* a way to conditionally render the text of the button.
+          <Grid item md={1} lg={2} xl={3} />
+          <Grid item xs={12} s={12} md={10} lg={8} xl={6}>
+            <main className="checkout--display">
+              <Paper className="checkout__paper--sizing">
+                <Stepper activeStep={activeStep} alternativeLabel>
+                  {steps.map((label) => (
+                    <Step key={label}>
+                      <StepLabel>{label}</StepLabel>
+                    </Step>
+                  ))}
+                </Stepper>
+                <div>
+                  {activeStep === steps.length ? (
+                    <React.Fragment>
+                      <Typography variant="h5" gutterBottom>
+                        Thank you for your order.
+                      </Typography>
+                      <Typography variant="subtitle1">
+                        Your order number is ___. We hav emailed your order confirmation, and will send you an update
+                        when your order has shipped.
+                      </Typography>
+                      <div className="button--display">
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          className="checkout__button--margin"
+                          aria-label="Back to Shop"
+                          component={toShopLink}
+                        >
+                          Back to Shop
+                        </Button>
+                      </div>
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      {this.getStepContent(activeStep)}
+                      <div className="button--display">
+                        {/* a way to hide buttons using activeStep state and && operator */}
+                        {activeStep !== 0 && (
+                          <Button className="checkout__button--margin" onClick={() => this.handleStep(-1)}>
+                            Back
+                          </Button>
+                        )}
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          className="checkout__button--margin"
+                          onClick={() => this.handleStep(1)}
+                        >
+                          {/* a way to conditionally render the text of the button.
                       Will need to change to properly place order and clear cart */}
-                      {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
-                    </Button>
-                  </div>
-                </React.Fragment>
-              )}
-            </div>
-          </Paper>
+                          {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                        </Button>
+                      </div>
+                    </React.Fragment>
+                  )}
+                </div>
+              </Paper>
+            </main>
+          </Grid>
+          <Grid item md={1} lg={2} xl={3} />
         </Grid>
       </React.Fragment>
     );

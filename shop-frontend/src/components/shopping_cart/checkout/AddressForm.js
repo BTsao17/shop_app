@@ -13,7 +13,7 @@ class AddressForm extends Component {
         <Typography variant="h6" gutterBottom>
           {this.props.addressType} Address
         </Typography>
-        <Grid container>
+        <Grid container spacing={24}>
           <Grid item xs={12} sm={6}>
             <TextField
               required
@@ -154,7 +154,7 @@ class AddressForm extends Component {
           </Grid>
           {/* allows for conditional rendering of checkbox */}
           {this.props.addressType === 'Shipping' && (
-            <Grid item xs={12}>
+            <Grid item xs={12} className="addressCheckbox--padding">
               <FormControlLabel
                 control={
                   <Checkbox

@@ -82,13 +82,18 @@ class Cart extends Component {
                   </TableBody>
                 </Table>
                 <div className="button--display">
-                  <Button variant="outlined" size="small" className="button--margin" component={goBackToShopLink}>
+                  <Button
+                    variant="contained"
+                    size="small"
+                    className="cart__button--margin"
+                    component={goBackToShopLink}
+                  >
                     Continue Shopping
                   </Button>
                   <Button
                     variant="contained"
                     size="small"
-                    className="button--margin"
+                    className="cart__button--margin"
                     color="primary"
                     component={checkoutLink}
                   >

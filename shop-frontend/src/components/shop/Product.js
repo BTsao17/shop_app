@@ -11,7 +11,7 @@ class Product extends Component {
 
     return (
       <React.Fragment>
-        <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+        <Grid item xs={12} sm={6} md={4} lg={3} xl={2} className="productCard--justify">
           <Card className="card--display">
             <CardMedia component="img" alt={item.name} className="image--fit" image={item.picture} title={item.name} />
             <CardContent className="cardContent--height">

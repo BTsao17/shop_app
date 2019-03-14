@@ -1,3 +1,21 @@
 .titlePadding {
   padding-top: 80px;
 }
+
+.cart--display,
+.checkout--display {
+  display: flex;
+  justify-content: center;
+}
+
+.cart__paper--sizing,
+.checkout__paper--sizing {
+  width: 90%;
+  margin-top: 24px;
+  margin-bottom: 40px;
+  overflow-x: auto;
+}
+
+.button--display {
+  text-align: right;
+}
