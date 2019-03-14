@@ -4,7 +4,7 @@
 }
 
 .shop__nav--margin {
-  margin-top: 64px;
+  margin-top: 56px;
 }
 
 .grid--padding {
@@ -24,7 +24,7 @@
   min-height: 140px;
 }
 
-.productCard--justify{
+.productCard--justify {
   display: flex;
   justify-content: center;
 }

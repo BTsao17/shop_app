@@ -7,8 +7,8 @@ const SideMenu = (props) => {
   return (
     <div className="sideMenuList">
       <List component="nav">
-        <SideMenuLink to="/" primary="Home" />
-        <SideMenuLink to="/shop" primary="Shop" />
+        {/* <SideMenuLink to="/" primary="Home" /> */}
+        <SideMenuLink to="/shop" primary="Shop" aria-label="Shop Page" />
       </List>
       <Divider />
       {/* links below will have to be conditionally rendered depending on login status */}
@@ -16,7 +16,7 @@ const SideMenu = (props) => {
         {/* <SideMenuLink to="/login" primary="Login" />
 					<SideMenuLink to="/signup" primary="New Customer? Register Here" />
 					<SideMenuLink to="/account" primary="Account" /> */}
-        <ListItem button onClick={() => props.logOut()}>
+        <ListItem button aria-label="Log Out" onClick={() => props.logOut()}>
           <ListItemText primary="Logout" />
         </ListItem>
       </List>

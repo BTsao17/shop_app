@@ -127,7 +127,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <CssBaseline />
-        <Header logOut={this.logOut} quantityInCart={quantityInCart} />
+        <Header logOut={this.logOut} quantityInCart={quantityInCart} logInStatus={loggedIn}/>
 
         <Switch>
           <Route
@@ -159,6 +159,16 @@ class App extends Component {
                 />
               ) : (
                 <Redirect to="/" exact />
+              );
+            }}
+          />
+          <Route
+            component={() => {
+              return (
+                <div>
+                  <h1>404</h1>
+                  <p>The page you are looking for cannot be found.</p>
+                </div>
               );
             }}
           />
