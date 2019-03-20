@@ -1,11 +1,13 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-// const cors = require('cors');
 const products = require('./data-files/products');
 const port = process.env.PORT || process.argv[2] || 3001;
 
-// app.use(cors());
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+}
+
 app.use(
   bodyParser.urlencoded({
     extended: false,

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Route, Switch, Redirect } from 'react-router-dom'
 import { Grid, Typography, List, ListItem, ListItemText } from '@material-ui/core';
 
 const PST_Rate = 0.07;
@@ -36,7 +35,6 @@ class ReviewCheckout extends Component {
         <Typography variant="h6" gutterBottom>
           Order Summary
         </Typography>
-        {/* Cart Summary */}
         <List disablePadding>
           {itemsList}
           <ListItem>
@@ -56,7 +54,6 @@ class ReviewCheckout extends Component {
             <Typography variant="subtitle1">${invoiceTotal.toFixed(2)}</Typography>
           </ListItem>
         </List>
-        {/* Addresses Details */}
         <Grid container spacing={24}>
           <Grid item xs={12} sm={6}>
             <Typography variant="h6" gutterBottom>
