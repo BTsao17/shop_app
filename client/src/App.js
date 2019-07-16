@@ -36,6 +36,8 @@ class App extends Component {
       });
     }
 
+    //need to remove url base localhost:8080 when using a proxy (and concurrently), so we don't need CORS 
+    //want request to be made to Webpack dev server, which will infer what traffic to proxy
     axios.get('http://localhost:8080/cart').then((response) => {
       this.setState({
         shoppingCart: response.data,
