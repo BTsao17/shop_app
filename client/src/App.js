@@ -38,7 +38,7 @@ class App extends Component {
 
     //need to remove url base localhost:8080 when using a proxy (and concurrently), so we don't need CORS 
     //want request to be made to Webpack dev server, which will infer what traffic to proxy
-    axios.get('http://localhost:8080/cart').then((response) => {
+    axios.get('/cart').then((response) => {
       this.setState({
         shoppingCart: response.data,
       });
@@ -48,7 +48,7 @@ class App extends Component {
   componentDidUpdate() {
     //this takes care of both adding and removing an item from the cart
     axios
-      .post('http://localhost:8080/cart', this.state.shoppingCart)
+      .post('/cart', this.state.shoppingCart)
       .then((response) => {
         // console.log(response.data)
       })
@@ -70,7 +70,7 @@ class App extends Component {
 
   clearCart = () => {
     axios
-      .delete('http://localhost:8080/clear', this.state.shoppingCart)
+      .delete('/clear', this.state.shoppingCart)
       .then((response) => console.log(response.data))
       .catch((err) => console.log(err));
   };
