@@ -12,6 +12,9 @@ app.use(
 );
 app.use(bodyParser.json());
 
+//static file declaration
+app.use(express.static(path.join(__dirname, 'client/build')));
+
 let shoppingCart = [];
 
 app.get('/products', (req, res) => {
@@ -32,18 +35,18 @@ app.delete('/clear', (req, res) => {
   res.send('cleared shopping cart on logout');
 });
 
-//static file declaration
-app.use(express.static(path.join(__dirname, 'client/build')));
+// //static file declaration
+// app.use(express.static(path.join(__dirname, 'client/build')));
 //production mode
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client/build')));
   app.get('*', (req,res) => {
-    res.sendFile(path.join(__dirname+'client/build/index.html'));
+    res.sendFile(path.join(__dirname, 'client/build/index.html'));
   });
 }
 //build mode - code breaks app. can't get data from server side
 app.get('*', (req,res) => {
-  res.sendFile(path.join(__dirname +'/client/public/index.html'));
+  res.sendFile(path.join(__dirname, '/client/public/index.html'));
 });
 
 app.listen(port, (req, res) => console.log(`server listening on ${port}`));
