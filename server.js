@@ -5,17 +5,19 @@ const products = require('./data-files/products');
 const port = process.env.PORT || process.argv[2] || 8080;
 
 const path = require('path');
-
-// if (process.env.NODE_ENV === 'production') {
-//   app.use(express.static('client/build'));
-// }
-
-//figuring out how to deploy properly using build production with 
-//Express static files & Routing, and Create-React-App 
-// app.use(express.static(path.join(_dirname, 'build')));
-// app.get('/*', (req, res) => {
-//   res.sendFile(path.join(_dirname, 'build', 'index.html'));
-// });
+//static file declaration
+app.use(express.static(path.join(__dirname, 'client/build')));
+//production mode
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+  app.get('*', (req,res) => {
+    res.sendFile(path.join(__dirname='client/build/index.html'));
+  });
+}
+//build mode
+app.get('*', (req,res) => {
+  res.sendFile(path.join(__dirname+'/client/public/index.html'));
+});
 
 app.use(
   bodyParser.urlencoded({
@@ -44,4 +46,4 @@ app.delete('/clear', (req, res) => {
   res.send('cleared shopping cart on logout');
 });
 
-app.listen(port, () => console.log(`Listening on ${port}`));
+app.listen(port, (req, res) => console.log(`server listening on ${port}`));
