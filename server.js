@@ -3,21 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const products = require('./data-files/products');
 const port = process.env.PORT || process.argv[2] || 8080;
-
 const path = require('path');
-//static file declaration
-app.use(express.static(path.join(__dirname, 'client/build')));
-//production mode
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client/build')));
-  app.get('*', (req,res) => {
-    res.sendFile(path.join(__dirname='client/build/index.html'));
-  });
-}
-//build mode
-app.get('*', (req,res) => {
-  res.sendFile(path.join(__dirname+'/client/public/index.html'));
-});
 
 app.use(
   bodyParser.urlencoded({
@@ -44,6 +30,20 @@ app.get('/cart', (req, res) => {
 app.delete('/clear', (req, res) => {
   shoppingCart = req.body;
   res.send('cleared shopping cart on logout');
+});
+
+//static file declaration
+app.use(express.static(path.join(__dirname, 'client/build')));
+//production mode
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+  app.get('*', (req,res) => {
+    res.sendFile(path.join(__dirname+'client/build/index.html'));
+  });
+}
+//build mode - code breaks app. can't get data from server side
+app.get('*', (req,res) => {
+  res.sendFile(path.join(__dirname +'/client/public/index.html'));
 });
 
 app.listen(port, (req, res) => console.log(`server listening on ${port}`));
