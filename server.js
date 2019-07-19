@@ -42,7 +42,7 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, 'client/build/index.html'));
   });
 }
-//build mode - code breaks app. can't get data from server side
+//build mode
 app.get('*', (req,res) => {
   res.sendFile(path.join(__dirname, '/client/public/index.html'));
 });
