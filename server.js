@@ -35,8 +35,6 @@ app.delete('/clear', (req, res) => {
   res.send('cleared shopping cart on logout');
 });
 
-// //static file declaration
-// app.use(express.static(path.join(__dirname, 'client/build')));
 //production mode
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client/build')));
