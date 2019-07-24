@@ -5,11 +5,11 @@ const products = require('./data-files/products');
 const port = process.env.PORT || process.argv[2] || 8080;
 const path = require('path');
 
-app.use(
-  bodyParser.urlencoded({
-    extended: false,
-  })
-);
+// app.use(
+//   bodyParser.urlencoded({
+//     extended: false,
+//   })
+// );
 app.use(bodyParser.json());
 
 //static file declaration
@@ -44,7 +44,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 //build mode
 app.get('*', (req,res) => {
-  res.sendFile(path.join(__dirname, '/client/public/index.html'));
+  res.sendFile(path.join(__dirname, 'client/public/index.html'));
 });
 
 app.listen(port, (req, res) => console.log(`server listening on ${port}`));
