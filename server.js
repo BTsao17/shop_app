@@ -5,11 +5,6 @@ const products = require('./data-files/products');
 const port = process.env.PORT || process.argv[2] || 8080;
 const path = require('path');
 
-// app.use(
-//   bodyParser.urlencoded({
-//     extended: false,
-//   })
-// );
 app.use(bodyParser.json());
 
 //static file declaration
